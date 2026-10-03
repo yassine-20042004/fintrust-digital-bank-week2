@@ -1,0 +1,5 @@
+Model,Accuracy,Precision,Recall,F1-Score,ROC-AUC,True Negatives,False Positives,False Negatives,True Positives
+Baseline Logistic Regression,0.6238,0.2859,0.6149,0.3903,0.673,1208,722,181,289
+Decision Tree,0.6362,0.2863,0.5745,0.3822,0.6354,1257,673,200,270
+Random Forest,0.7729,0.3574,0.2,0.2565,0.6487,1761,169,376,94
+XGBoost Classifier,0.6683,0.2827,0.4511,0.3475,0.639,1392,538,258,212

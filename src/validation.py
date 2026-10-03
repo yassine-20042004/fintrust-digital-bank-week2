@@ -34,7 +34,11 @@ def validate_customer_data(df: pd.DataFrame) -> bool:
     missing_cols = REQUIRED_CUSTOMER_COLS - set(df.columns)
     if missing_cols:
         raise DataValidationError(f"Missing customer columns: {missing_cols}")
-    if (df['Age'] <= 0).any() or (df['Age'] > 120).any():
+    try:
+        age_numeric = pd.to_numeric(df['Age'])
+    except (ValueError, TypeError):
+        raise DataValidationError("Age must be a numeric column.")
+    if (age_numeric <= 0).any() or (age_numeric > 120).any():
         raise DataValidationError("Invalid Age boundary detected.")
     if (df['Digital_Engagement_Score'] < 0).any() or (df['Digital_Engagement_Score'] > 100).any():
         raise DataValidationError("Engagement score outside valid [0, 100] range.")
